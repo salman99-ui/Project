@@ -2,7 +2,7 @@
 <head>
     <link rel="">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <style>
         h2{
             text-align: center;
@@ -42,60 +42,39 @@
 </head>
 <body>
 <div class="container">
-    <h2>Input Data Barang</h2>
+    <h2>Tambah Transaksi</h2>
     <div class="wrapper">
 
         <div class="inputform">
-
+            <form>
                 <div class="form-group">
                     <label for="barang">Nama Barang </label>
                     <input type="text" placeholder="cth. Suntikan " class="form-control" id="barang">
                 </div>
 
                 <div class="form-group">
-                    <label for="harga">Harga </label>
-                    <input type="text" placeholder="cth. 18000 " class="form-control" id="harga">
+                    <label for="stock">Stock Keluar </label>
+                    <input type="text" placeholder="cth. 18000 " class="form-control" id="stock">
                 </div>
 
                 <div class="form-group">
-                    <label for="stock">Stock</label>
-                    <input type="text" placeholder="cth. 82" class="form-control" id="stock">
+                    <label for="tujuan">Tujuan</label>
+                    <input type="text" placeholder="cth. 82" class="form-control" id="tujuan">
                 </div>
 
                 <div class="form-group">
-                    <label for="satuan">Satuan </label>
-                    <input type="text" class="form-control" id="satuan" placeholder="cth. Pcs">
+                    <label for="validation">Validation</label>
+                    <input type="text" class="form-control" id="validation" placeholder="cth. Pcs">
                 </div>
 
                 <div class="confirm">
-                    <button class="btn cancel" onclick="cancel()">Batal</button>
-                    <button class="btn btn-md btn-success" onclick="adddata()">OK</button>
+                    <button class="btn cancel">Batal</button>
+                    <button class="btn btn-md btn-success">OK</button>
                 </div>
-
+            </form>
         </div>
     </div>
 </div>
 </body>
-<script>
-    function adddata(){
-        swal({
-            title: "Success !",
-            text: "Data Berhasil di Tambah",
-            icon: "success",
-            button: "Ok",
-        });
 
-    }
-
-    function cancel(){
-        swal({
-            title : "Confirm" ,
-            text : "Ingin Membatalkan dan Kembali ?" ,
-            icon : "warning" ,
-            buttons : true,
-
-        })
-
-    }
-</script>
 </html>

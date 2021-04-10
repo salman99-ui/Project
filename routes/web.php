@@ -19,6 +19,10 @@ Route::get('/', function () {
 
 Route::get('/p' , [\App\Http\Controllers\mycontroller::class , 'index']);
 Route::get('/stock' , [\App\Http\Controllers\mycontroller::class , 'stock']);
+Route::get('/login' , [\App\Http\Controllers\mycontroller::class , 'login']);
+Route::get('/update' , [\App\Http\Controllers\mycontroller::class , 'update']);
+Route::get('/addtransaction' , [\App\Http\Controllers\mycontroller::class , 'addtransaction']);
+Route::get('/updatetransaction' , [\App\Http\Controllers\mycontroller::class , 'updatetransaction']);
 Route::get('/h' , function() {
     return 'Hello world' ;
 });

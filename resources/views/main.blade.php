@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
     <style>
@@ -75,11 +75,14 @@
                     <tr>
                         <td>Jarum</td>
                         <td>Pcs</td>
-                        <td>90000</td>
+                        <td><i class="fa fa-trash-o" style="font-size:24px;color:red"></i></td>
                         <td>90</td>
                         <td>
-                            <a href="" class="btn btn-outline-success">Delete</a>
+                            <a href="" class="btn btn-outline-success">Delete
+
+                            </a>
                             <a href="" class="btn btn-outline-danger mr-2">Update</a>
+
                         </td>
                     </tr>
 
@@ -100,7 +103,7 @@
                         <td>15000</td>
                         <td>40</td>
                         <td>
-                            <a href="" class="btn btn-outline-success">Delete</a>
+                            <a  class="btn btn-outline-success" onclick="cancel()">Delete</a>
                             <a href="" class="btn btn-outline-danger mr-2">Update</a>
                         </td>
                     </tr>
@@ -114,6 +117,27 @@
     $(document).ready( function () {
         $('#myTable').DataTable();
     } );
+
+    function cancel(){
+        swal({
+            title : "Attention" ,
+            text : "Apakah Ingin Menghapus Data ?" ,
+            icon : "error" ,
+            buttons : true,
+
+        }).then((value) => {
+            if(value){
+                swal({
+                    title : "Success" ,
+                    text : "Data Berhasil di Hapus" ,
+                    icon : "success" ,
+                    button : "Ok",
+
+                })
+            }
+        })
+
+    }
 </script>
 </body>
 

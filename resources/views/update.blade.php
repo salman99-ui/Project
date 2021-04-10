@@ -42,7 +42,7 @@
 </head>
 <body>
 <div class="container">
-    <h2>Input Data Barang</h2>
+    <h2>Ubah Barang</h2>
     <div class="wrapper">
 
         <div class="inputform">
@@ -89,13 +89,14 @@
 
     function cancel(){
         swal({
-            title : "Confirm" ,
-            text : "Ingin Membatalkan dan Kembali ?" ,
-            icon : "warning" ,
+            title : "" ,
+            text : "Ingin Membatalkan dan Kembali" ,
+            icon : "info" ,
             buttons : true,
 
         })
 
     }
 </script>
+
 </html>
