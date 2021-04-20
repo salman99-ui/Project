@@ -13,7 +13,7 @@
             display: flex;
             justify-content: center;
             margin: 10% 0%;
-            border: 1px solid black;
+
 
         }
 
@@ -46,30 +46,36 @@
     <div class="wrapper">
 
         <div class="inputform">
-            <form>
+            <form action="/updatetransactions/process" method="post">
+                {{csrf_field()}}
+                <div class="form-group">
+
+                    <input type="hidden" name="id" value="{{$data->id}}" class="form-control" >
+                </div>
+
                 <div class="form-group">
                     <label for="barang">Nama Barang </label>
-                    <input type="text" placeholder="cth. Suntikan " class="form-control" id="barang">
+                    <input readonly type="text" value="{{$data->nama_barang}}" class="form-control" id="barang">
                 </div>
 
                 <div class="form-group">
                     <label for="stock">Stock Keluar </label>
-                    <input type="text" placeholder="cth. 18000 " class="form-control" id="stock">
+                    <input readonly type="text" value="{{$data->stock_keluar}}" class="form-control" id="stock">
                 </div>
 
                 <div class="form-group">
                     <label for="tujuan">Tujuan</label>
-                    <input type="text" placeholder="cth. 82" class="form-control" id="tujuan">
+                    <input type="text" name="tujuan" value="{{$data->tujuan}}" class="form-control" id="tujuan">
                 </div>
 
                 <div class="form-group">
                     <label for="validation">Validation</label>
-                    <input type="text" class="form-control" id="validation" placeholder="cth. Pcs">
+                    <input type="text" name="validation" class="form-control" id="validation" value="{{$data->validation}}">
                 </div>
 
                 <div class="confirm">
                     <button class="btn cancel">Batal</button>
-                    <button class="btn btn-md btn-success">OK</button>
+                    <button type="submit" class="btn btn-md btn-success">OK</button>
                 </div>
             </form>
         </div>

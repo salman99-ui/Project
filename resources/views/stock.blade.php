@@ -13,7 +13,7 @@
             display: flex;
             justify-content: center;
             margin: 10% 0%;
-            border: 1px solid black;
+
 
         }
 
@@ -46,43 +46,47 @@
     <div class="wrapper">
 
         <div class="inputform">
-
+            <form method="post" action="/stock/process" onsubmit="return adddata()">
+    {{csrf_field()}}
                 <div class="form-group">
                     <label for="barang">Nama Barang </label>
-                    <input type="text" placeholder="cth. Suntikan " class="form-control" id="barang">
+                    <input type="text" placeholder="cth. Suntikan " name="barang" class="form-control" id="barang">
                 </div>
 
                 <div class="form-group">
                     <label for="harga">Harga </label>
-                    <input type="text" placeholder="cth. 18000 " class="form-control" id="harga">
+                    <input type="text" placeholder="cth. 18000 " name="harga" class="form-control" id="harga">
                 </div>
 
                 <div class="form-group">
                     <label for="stock">Stock</label>
-                    <input type="text" placeholder="cth. 82" class="form-control" id="stock">
+                    <input type="text" placeholder="cth. 82" name="stock" class="form-control" id="stock">
                 </div>
 
                 <div class="form-group">
                     <label for="satuan">Satuan </label>
-                    <input type="text" class="form-control" id="satuan" placeholder="cth. Pcs">
+                    <input type="text" class="form-control" name="satuan" id="satuan" placeholder="cth. Pcs">
                 </div>
 
                 <div class="confirm">
-                    <button class="btn cancel" onclick="cancel()">Batal</button>
+                    <span class="btn btn-danger" onclick="cancel()">Batal</span>
                     <button class="btn btn-md btn-success" onclick="adddata()">OK</button>
                 </div>
+            </form>
 
         </div>
     </div>
 </div>
 </body>
 <script>
+
     function adddata(){
+
         swal({
             title: "Success !",
             text: "Data Berhasil di Tambah",
             icon: "success",
-            button: "Ok",
+            buttons: "Ok",
         });
 
     }

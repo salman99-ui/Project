@@ -17,12 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/p' , [\App\Http\Controllers\mycontroller::class , 'index']);
+
+
+Route::get('/main' , [\App\Http\Controllers\mycontroller::class , 'index']);
 Route::get('/stock' , [\App\Http\Controllers\mycontroller::class , 'stock']);
 Route::get('/login' , [\App\Http\Controllers\mycontroller::class , 'login']);
 Route::get('/update' , [\App\Http\Controllers\mycontroller::class , 'update']);
 Route::get('/addtransaction' , [\App\Http\Controllers\mycontroller::class , 'addtransaction']);
-Route::get('/updatetransaction' , [\App\Http\Controllers\mycontroller::class , 'updatetransaction']);
-Route::get('/h' , function() {
-    return 'Hello world' ;
-});
+
+Route::get('/transaction' , [\App\Http\Controllers\mycontroller::class , 'transaction']);
+
+Route::post('/login/process' , [\App\Http\Controllers\mycontroller::class , 'authlogin']);
+Route::post('/stock/process' , [\App\Http\Controllers\mycontroller::class , 'stockprocess']);
+Route::post('/transaction/process' , [\App\Http\Controllers\mycontroller::class , 'transactionprocess']);
+
+Route::get('/updatestock/{nama}' , [\App\Http\Controllers\mycontroller::class , 'updatestock']);
+Route::post('/updatestock/process' , [\App\Http\Controllers\mycontroller::class , 'updatestockprocess']);
+Route::get('/deletestock/{nama}' , [\App\Http\Controllers\mycontroller::class , 'deletestock']);
+
+Route::get('/updatetransactions/{id}' , [\App\Http\Controllers\mycontroller::class , 'updatetransaction']);
+Route::post('/updatetransactions/process' , [\App\Http\Controllers\mycontroller::class , 'updatetransactionprocess']);
+
+Route::get('/deletetransactions/{id}' , [\App\Http\Controllers\mycontroller::class , 'deletetransactions']);
+

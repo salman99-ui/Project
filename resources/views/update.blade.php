@@ -13,7 +13,7 @@
             display: flex;
             justify-content: center;
             margin: 10% 0%;
-            border: 1px solid black;
+
 
         }
 
@@ -44,35 +44,37 @@
 <div class="container">
     <h2>Ubah Barang</h2>
     <div class="wrapper">
+        <form action="/updatestock/process" method="post">
+            {{csrf_field()}}
+            <div class="inputform">
 
-        <div class="inputform">
+                    <div class="form-group">
+                        <label for="barang">Nama Barang </label>
+                        <input readonly type="text" name="barang" value="{{$data->nama_barang}}" class="form-control" id="barang">
+                    </div>
 
-                <div class="form-group">
-                    <label for="barang">Nama Barang </label>
-                    <input type="text" placeholder="cth. Suntikan " class="form-control" id="barang">
-                </div>
+                    <div class="form-group">
+                        <label for="harga">Harga </label>
+                        <input type="text" name="harga" value="{{$data->harga}}" class="form-control" id="harga">
+                    </div>
 
-                <div class="form-group">
-                    <label for="harga">Harga </label>
-                    <input type="text" placeholder="cth. 18000 " class="form-control" id="harga">
-                </div>
+                    <div class="form-group">
+                        <label for="stock">Stock</label>
+                        <input type="text" name="stock" value="{{$data->stock}}" class="form-control" id="stock">
+                    </div>
 
-                <div class="form-group">
-                    <label for="stock">Stock</label>
-                    <input type="text" placeholder="cth. 82" class="form-control" id="stock">
-                </div>
+                    <div class="form-group">
+                        <label for="satuan">Satuan </label>
+                        <input readonly type="text" class="form-control" id="satuan" value="{{$data->satuan}}">
+                    </div>
 
-                <div class="form-group">
-                    <label for="satuan">Satuan </label>
-                    <input type="text" class="form-control" id="satuan" placeholder="cth. Pcs">
-                </div>
+                    <div class="confirm">
+                        <button class="btn cancel" onclick="cancel()">Batal</button>
+                        <button type="submit" class="btn btn-md btn-success" onclick="adddata()">OK</button>
+                    </div>
 
-                <div class="confirm">
-                    <button class="btn cancel" onclick="cancel()">Batal</button>
-                    <button class="btn btn-md btn-success" onclick="adddata()">OK</button>
-                </div>
-
-        </div>
+            </div>
+        </form>
     </div>
 </div>
 </body>

@@ -18,7 +18,7 @@ class CreateTransactionsTable extends Migration
           $table->integer("stock_keluar");
           $table->string("tujuan");
           $table->string("validation");
-          $table->foreign("nama_barang")->references("nama_barang")->on("products");
+          $table->foreign("nama_barang")->references("nama_barang")->on("products")->onDelete('cascade');
         });
     }
 

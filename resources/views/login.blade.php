@@ -58,10 +58,11 @@
 <body>
 <div class="wrapper">
     <div class="form">
-        <form>
+        <form action="/login/process" method="post">
+            {{csrf_field()}}
             <h2>Selamat Datang</h2>
-            <input type="text" name="username">
-            <input type="password" name="password">
+            <input type="text" name="username" placeholder="username">
+            <input type="password" name="password" placeholder="password">
             <button type="submit">Masuk</button>
         </form>
     </div>

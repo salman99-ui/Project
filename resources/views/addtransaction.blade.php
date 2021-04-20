@@ -2,7 +2,7 @@
 <head>
     <link rel="">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
         h2{
             text-align: center;
@@ -13,7 +13,7 @@
             display: flex;
             justify-content: center;
             margin: 10% 0%;
-            border: 1px solid black;
+
 
         }
 
@@ -46,35 +46,58 @@
     <div class="wrapper">
 
         <div class="inputform">
-            <form>
+            <form action="/transaction/process" method="post">
+                {{csrf_field()}}
                 <div class="form-group">
                     <label for="barang">Nama Barang </label>
-                    <input type="text" placeholder="cth. Suntikan " class="form-control" id="barang">
+                    <input type="text" placeholder="cth. Suntikan " name="barang" class="form-control" id="barang">
                 </div>
 
                 <div class="form-group">
                     <label for="stock">Stock Keluar </label>
-                    <input type="text" placeholder="cth. 18000 " class="form-control" id="stock">
+                    <input type="text" placeholder="cth. 18000 " class="form-control" name="stock" id="stock">
                 </div>
 
                 <div class="form-group">
                     <label for="tujuan">Tujuan</label>
-                    <input type="text" placeholder="cth. 82" class="form-control" id="tujuan">
+                    <input type="text" placeholder="cth. Rs.Medika" class="form-control" name="tujuan" id="tujuan">
                 </div>
 
                 <div class="form-group">
                     <label for="validation">Validation</label>
-                    <input type="text" class="form-control" id="validation" placeholder="cth. Pcs">
+                    <input type="text" class="form-control" id="validation" name="validasi" placeholder="cth. Pcs">
                 </div>
 
                 <div class="confirm">
-                    <button class="btn cancel">Batal</button>
-                    <button class="btn btn-md btn-success">OK</button>
+                    <button class="btn cancel" onclick="cancel()">Batal</button>
+                    <button class="btn btn-md btn-success" onclick="adddata()">OK</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 </body>
+<script>
+    function adddata(){
+        swal({
+            title: "Success !",
+            text: "Data Berhasil di Tambah",
+            icon: "success",
+            button: "Ok",
+        });
+
+    }
+
+    function cancel(){
+        swal({
+            title : "Confirm" ,
+            text : "Ingin Membatalkan dan Kembali ?" ,
+            icon : "warning" ,
+            buttons : true,
+
+        })
+
+    }
+</script>
 
 </html>
