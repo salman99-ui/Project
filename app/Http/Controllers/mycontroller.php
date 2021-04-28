@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF ;
 
 class mycontroller extends Controller
 {
@@ -123,6 +124,12 @@ class mycontroller extends Controller
     public function deletetransactions($id){
         DB::table('transactions')->where('id' , '=' , $id)->delete();
         return redirect('transaction');
+    }
+
+    public function getpdftrans(){
+        $data = DB::table('transactions')->get();
+        $pdf = PDF::loadview('transactions_pdf' , ['data' => $data]) ;
+        return $pdf->download('laporan_transaksi.pdf') ;
     }
 
 

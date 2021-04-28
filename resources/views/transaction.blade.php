@@ -6,7 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
         .row{
@@ -56,7 +56,7 @@
     <div class="col-sm-9 p-4">
         <div class="container">
             <div class="mb-4">
-                <a href="" class="btn btn-outline-danger mr-2">Print Laporan</a>
+                <a href="/gettransaksi" class="btn btn-outline-danger mr-2">Print Laporan</a>
                 <a href="/addtransaction" class="btn btn-outline-success">Add Transaksi</a>
             </div>
 
@@ -83,8 +83,8 @@
                             <td>{{$row->tujuan}}</td>
                             <td>{{$row->validation}}</td>
                             <td>
-                                <a href="/deletetransactions/{{$row->id}}" class="btn btn-outline-success">Delete</a>
-                                <a href="/updatetransactions/{{$row->id}}" class="btn btn-outline-danger mr-2">Update</a>
+                                <a href="/deletetransactions/{{$row->id}}" class="btn btn-outline-danger mr-2"><i class="fa fa-trash"></i></a>
+                                <a href="/updatetransactions/{{$row->id}}" class="btn btn-outline-success "><i class="fa fa-pencil"></i></a>
 
                             </td>
                         </tr>

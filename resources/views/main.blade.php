@@ -6,7 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
         .row{
@@ -80,10 +80,13 @@
                        <td>{{$row->harga}}</td>
                        <td>{{$row->stock}}</td>
                        <td>
-                           <a href="/deletestock/{{$row->nama_barang}}" class="btn btn-outline-danger">Delete
-
+                           <a href="/deletestock/{{$row->nama_barang}}" class="btn btn-outline-danger mr-2">
+                               <i class="fa fa-trash"></i>
                            </a>
-                           <a href="/updatestock/{{$row->nama_barang}}" class="btn btn-outline-success mr-2">Update</a>
+
+                           <a href="/updatestock/{{$row->nama_barang}}" class="btn btn-outline-success ">
+                               <i class="fa fa-pencil"></i>
+                           </a>
 
                        </td>
                    </tr>

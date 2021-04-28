@@ -40,3 +40,4 @@ Route::post('/updatetransactions/process' , [\App\Http\Controllers\mycontroller:
 
 Route::get('/deletetransactions/{id}' , [\App\Http\Controllers\mycontroller::class , 'deletetransactions']);
 
+Route::get('/gettransaksi' , [\App\Http\Controllers\mycontroller::class , 'getpdftrans']) ;
