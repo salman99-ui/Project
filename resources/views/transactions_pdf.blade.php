@@ -11,9 +11,9 @@
 <div class="row">
 
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px">Data Transaksi</h2>
+            <h2 style="text-align: center; margin: 40px 0">Data Transaksi Bulan {{date("F Y")}}</h2>
             <div class="data">
-                <table id="myTable" class="table table-striped table-hovered">
+                <table id="myTable" class="table table-bordered">
                     <thead>
                     <tr>
                         <td>Tanggal</td>

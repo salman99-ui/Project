@@ -132,5 +132,10 @@ class mycontroller extends Controller
         return $pdf->download('laporan_transaksi.pdf') ;
     }
 
+    public function getpdfstock(){
+        $data = DB::table('products')->get();
+        $pdf = PDF::loadview('products_pdf' , ['data' => $data]) ;
+        return $pdf->download('laporan_stock.pdf') ;
+    }
 
 }

@@ -23,7 +23,7 @@
         }
         .transaction a{
             color:black;
-           
+
         }
 
         .stock a:hover{
@@ -39,7 +39,7 @@
     <div class="col-sm-3 col1 d-flex flex-column p-4 ">
 
        <div class="stock mb-5 d-flex justify-content-center">
-        <a href="/p">
+        <a href="/main">
             <img src="/images/stock.png" width="50" height="50">
             <span>Tabel Stock</span>
         </a>
@@ -56,7 +56,7 @@
     <div class="col-sm-9 p-4">
         <div class="container">
         <div class="mb-4">
-            <a href="" class="btn btn-outline-danger mr-2">Print Laporan</a>
+            <a href="/getproducts" class="btn btn-outline-danger mr-2">Print Laporan</a>
             <a href="/stock" class="btn btn-outline-success">Add Stock</a>
         </div>
 
@@ -77,7 +77,7 @@
                    <tr>
                        <td>{{$row->nama_barang}}</td>
                        <td>{{$row->satuan}}</td>
-                       <td>{{$row->harga}}</td>
+                       <td>Rp. {{$row->harga}}</td>
                        <td>{{$row->stock}}</td>
                        <td>
                            <a href="/deletestock/{{$row->nama_barang}}" class="btn btn-outline-danger mr-2">
