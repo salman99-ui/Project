@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="validation">Validation</label>
+                    <label for="validation">Validasi</label>
                     <input type="text" class="form-control" id="validation" name="validasi" placeholder="cth. Pcs">
                 </div>
 

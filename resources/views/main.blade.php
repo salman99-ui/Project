@@ -1,11 +1,14 @@
 <html>
 <head>
     <link rel="">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
@@ -35,6 +38,7 @@
     </style>
 </head>
 <body>
+
 <div class="row">
     <div class="col-sm-3 col1 d-flex flex-column p-4 ">
 
@@ -55,13 +59,15 @@
     </div>
     <div class="col-sm-9 p-4">
         <div class="container">
+            <h2 class="mb-3">Table Stock</h2>
+
         <div class="mb-4">
-            <a href="/getproducts" class="btn btn-outline-danger mr-2">Print Laporan</a>
-            <a href="/stock" class="btn btn-outline-success">Add Stock</a>
+            <a href="/getproducts" class="btn btn-outline-secondary mr-2"><i class="fa fa-files-o"></i> Print </a>
+            <a data-target="#Modaladd" id="add" data-toggle="modal" class="btn btn-outline-success"><i class="fa fa-plus"></i> Add Stock</a>
         </div>
 
         <div class="data">
-            <table id="myTable" class="table table-striped table-hovered text-center">
+            <table id="myTable" class="table table-striped table-hovered">
                 <thead>
                     <tr>
                         <td>Nama Item</td>
@@ -84,24 +90,227 @@
                                <i class="fa fa-trash"></i>
                            </a>
 
-                           <a href="/updatestock/{{$row->nama_barang}}" class="btn btn-outline-success ">
+                           <a data-target="#myModal2" id="update" data-toggle="modal"
+                              data-barang="{{$row->nama_barang}}"
+                              data-satuan="{{$row->satuan}}"
+                              data-harga="{{$row->harga}}"
+                              data-stock="{{$row->stock}}"
+                              class="btn btn-outline-success ">
                                <i class="fa fa-pencil"></i>
                            </a>
 
+                           <a data-toggle="modal" id="tambah"
+                              data-barang="{{$row->nama_barang}}"
+                              data-satuan="{{$row->satuan}}"
+                              data-harga="{{$row->harga}}"
+                              data-stock="{{$row->stock}}"
+                              data-target="#myModal" class="btn btn-outline-primary ">
+                               <i class="fa fa-plus"></i>
+                           </a>
                        </td>
                    </tr>
                @endforeach
 
                 </tbody>
             </table>
+
+
+
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form action="/transaction/process" method="post">
+                            {{csrf_field()}}
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h3 class="text-primary">Tambah Transaksi</h3>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                               <div class="form-group">
+                                   <label>Nama Barang</label>
+                                   <input id="nama_barang" type="" value="" class="form-control" name="barang"  />
+                               </div>
+
+                               <div class="form-group">
+                                   <label>Stock keluar</label>
+                                   <input id="stock_keluar" type="" value="" class="form-control" name="stock"  />
+                               </div>
+
+                               <div class="form-group">
+                                   <label>Tujuan Transaksi</label>
+                                   <input id="satuan_barang" type="" value="" class="form-control" name="tujuan"  />
+                               </div>
+
+                               <div class="form-group">
+                                   <label>Validasi</label>
+                                   <select class="form-control" name="validasi">
+                                        <option value="Belum Selesai">Belum Selesai</option>
+                                        <option value="Selesai">Selesai</option>
+                                   </select>
+
+
+                               </div>
+
+
+
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
         </div>
+
+            <div class="modal fade" id="myModal2">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form action="/updatestock/process" method="post">
+                        {{csrf_field()}}
+                        <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h3 class="text-success">Ubah Data</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label>Nama Barang</label>
+                                    <input id="nama" type="" value="" class="form-control" name="barang"  />
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Satuan Barang</label>
+                                    <select class="form-control" name="satuan">
+                                        <option value="PCS">PCS</option>
+                                        <option value="Btl">Btl</option>
+                                        <option value="Ltr">Ltr</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Harga</label>
+                                    <input id="harga" type="" value="" class="form-control" name="harga"  />
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Jumlah Stock</label>
+                                    <input id="stock" type="" value="" class="form-control" name="stock"  />
+
+
+                                </div>
+
+
+
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="Modaladd">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form action="/stock/process" method="post">
+                        {{csrf_field()}}
+                        <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h3 class="text-success">Ubah Data</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label>Nama Barang</label>
+                                    <input id="nama" type="" value="" class="form-control" name="barang" placeholder="Nama Barang" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Satuan Barang</label>
+                                    <select class="form-control" name="satuan">
+                                        <option value="PCS">PCS</option>
+                                        <option value="Btl">Btl</option>
+                                        <option value="Ltr">Ltr</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Harga</label>
+                                    <input id="harga" type="" value="" class="form-control" name="harga" placeholder="60.000" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Jumlah Stock</label>
+                                    <input id="stock" type="" value="" class="form-control" name="stock" placeholder="Stock Barang"  />
+
+
+                                </div>
+
+
+
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Tambah</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <script>
+
     $(document).ready( function () {
         $('#myTable').DataTable();
     } );
+
+    $(document).on('click' , '#tambah' , function(){
+        let nama = $(this).data('barang')
+        let harga = $(this).data('harga')
+        let satuan = $(this).data('satuan')
+
+
+        $('.modal-body #nama_barang').val(nama)
+        $('.modal-body #harga_barang').val(harga)
+        $('.modal-body #satuan_barang').val(satuan)
+        $('.modal-body #stock_keluar').val(0)
+
+    })
+
+    $(document).on('click' , '#update' , function(){
+        let nama = $(this).data('barang')
+        let harga = $(this).data('harga')
+        let satuan = $(this).data('satuan')
+        let stock = $(this).data('satuan')
+
+        $('.modal-body #nama').val(nama)
+        $('.modal-body #harga').val(harga)
+        $('.modal-body #satuan').val(satuan)
+        $('.modal-body #stock').val(stock)
+
+    })
 
     function cancel(){
         swal({
@@ -123,6 +332,8 @@
         })
 
     }
+
+
 
 
 

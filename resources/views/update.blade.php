@@ -50,7 +50,7 @@
 
                     <div class="form-group">
                         <label for="barang">Nama Barang </label>
-                        <input readonly type="text" name="barang" value="{{$data->nama_barang}}" class="form-control" id="barang">
+                        <input type="text" name="barang" value="{{$data->nama_barang}}" class="form-control" id="barang">
                     </div>
 
                     <div class="form-group">

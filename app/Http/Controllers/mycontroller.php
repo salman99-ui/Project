@@ -28,7 +28,7 @@ class mycontroller extends Controller
     public function updatestockprocess(Request $request){
              DB::table('products')
             ->where('nama_barang' , '=' , $request->barang)
-            ->update(['stock' => $request->stock , 'harga' => $request->harga]);
+            ->update(['nama_barang' => $request->barang ,'stock' => $request->stock , 'harga' => $request->harga , 'satuan' => $request->satuan]);
 
              return redirect('/main');
     }

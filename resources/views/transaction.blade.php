@@ -55,9 +55,10 @@
     </div>
     <div class="col-sm-9 p-4">
         <div class="container">
+            <h2 class="mb-3">Table Stock</h2>
             <div class="mb-4">
-                <a href="/gettransaksi" class="btn btn-outline-danger mr-2">Print Laporan</a>
-                <a href="/addtransaction" class="btn btn-outline-success">Add Transaksi</a>
+                <a href="/gettransaksi" class="btn btn-outline-secondary mr-2"><i class="fa fa-files-o"></i> Print</a>
+                <a href="/addtransaction" class="btn btn-outline-success"><i class="fa fa-plus"></i> Add Transaksi</a>
             </div>
 
             <div class="data">
