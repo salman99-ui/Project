@@ -1,11 +1,14 @@
 <html>
 <head>
     <link rel="">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
@@ -84,8 +87,20 @@
                             <td>{{$row->tujuan}}</td>
                             <td>{{$row->validation}}</td>
                             <td>
-                                <a href="/deletetransactions/{{$row->id}}" class="btn btn-outline-danger mr-2"><i class="fa fa-trash"></i></a>
-                                <a href="/updatetransactions/{{$row->id}}" class="btn btn-outline-success "><i class="fa fa-pencil"></i></a>
+                                <a href="/deletetransactions/{{$row->id}}" class="btn btn-outline-danger mr-2">
+
+                                    <i class="fa fa-trash"></i>
+                                </a>
+
+                                <a
+                                   class="btn btn-outline-success "
+                                   data-target="#myModal2" id="update" data-toggle="modal"
+                                   data-id="{{$row->id}}"
+                                   data-barang="{{$row->nama_barang}}"
+                                   data-tujuan="{{$row->tujuan}}"
+                                   data-validasi="{{$row->validation}}"
+                                   data-stock="{{$row->stock_keluar}}"
+                                ><i class="fa fa-pencil"></i></a>
 
                             </td>
                         </tr>
@@ -95,6 +110,56 @@
 
                     </tbody>
                 </table>
+
+                <div class="modal fade" id="myModal2">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <form action="/updatetransactions/process" method="post">
+                                {{csrf_field()}}
+
+
+                                <div class="modal-header">
+                                    <h3 class="text-success">Ubah Data</h3>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <input type="hidden" id="id" name="id" value="" class="form-control" >
+                                <div class="form-group">
+                                    <label for="barang">Nama Barang </label>
+                                    <input readonly type="text" class="form-control" id="barang">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="stock">Stock Keluar </label>
+                                    <input readonly type="text" class="form-control" id="stock">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tujuan">Tujuan</label>
+                                    <input type="text" name="tujuan" class="form-control" id="tujuan">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validation">Validasi</label>
+                                    <select class="form-control" name="validation" id="validasi">
+                                        <option value="Belum Selesai">Belum Selesai</option>
+                                        <option value="Selesai">Selesai</option>
+                                    </select>
+                                </div>
+
+
+                                </div>
+                                <div class="modal-footer">
+
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-success">Update</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -103,6 +168,21 @@
     $(document).ready( function () {
         $('#myTable').DataTable();
     } );
+
+    $(document).on('click' , '#update' , function(){
+        let barang = $(this).data('barang')
+        let stock = $(this).data('stock')
+        let tujuan = $(this).data('tujuan')
+        let validasi = $(this).data('validasi')
+        let id = $(this).data('id')
+
+        $('.modal-body #id').val(id)
+        $('.modal-body #barang').val(barang)
+        $('.modal-body #tujuan').val(tujuan)
+        $('.modal-body #validasi').val(validasi)
+        $('.modal-body #stock').val(stock)
+
+    })
 
     function cancel(){
         swal({

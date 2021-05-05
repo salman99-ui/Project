@@ -63,7 +63,7 @@
 
         <div class="mb-4">
             <a href="/getproducts" class="btn btn-outline-secondary mr-2"><i class="fa fa-files-o"></i> Print </a>
-            <a data-target="#Modaladd" id="add" data-toggle="modal" class="btn btn-outline-success"><i class="fa fa-plus"></i> Add Stock</a>
+            <a data-target="#Modaladd" id="" data-toggle="modal" class="btn btn-outline-success"><i class="fa fa-plus"></i> Add Stock</a>
         </div>
 
         <div class="data">
@@ -86,7 +86,12 @@
                        <td>Rp. {{$row->harga}}</td>
                        <td>{{$row->stock}}</td>
                        <td>
-                           <a href="/deletestock/{{$row->nama_barang}}" class="btn btn-outline-danger mr-2">
+                           <a  id="delete"
+                              class="btn btn-outline-danger mr-2"
+                              data-toggle="modal"
+                              data-target="#Modaldelete"
+                              data-url="/deletestock/{{$row->nama_barang}}"
+                           >
                                <i class="fa fa-trash"></i>
                            </a>
 
@@ -95,7 +100,7 @@
                               data-satuan="{{$row->satuan}}"
                               data-harga="{{$row->harga}}"
                               data-stock="{{$row->stock}}"
-                              class="btn btn-outline-success ">
+                              class="btn btn-outline-success mr-2">
                                <i class="fa fa-pencil"></i>
                            </a>
 
@@ -162,7 +167,7 @@
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                         </form>
@@ -216,7 +221,7 @@
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                 <button type="submit" class="btn btn-success">Update</button>
                             </div>
                         </form>
@@ -270,8 +275,35 @@
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                 <button type="submit" class="btn btn-success">Tambah</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="Modaldelete">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form id="form" action="" method="get">
+
+                        <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h3 class="text-success">Konfirmasi</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <h5 class="">Apakah Ingin Menghapus Barang ?</h5>
+
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-success">Delete</button>
                             </div>
                         </form>
                     </div>
@@ -309,6 +341,12 @@
         $('.modal-body #harga').val(harga)
         $('.modal-body #satuan').val(satuan)
         $('.modal-body #stock').val(stock)
+
+    })
+
+    $(document).on('click' , '#delete' , function(){
+        let url = $(this).data('url')
+        $('.modal-content #form').attr('action', url);
 
     })
 
