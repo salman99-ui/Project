@@ -44,7 +44,7 @@
         <div class="stock mb-5 d-flex justify-content-center">
             <a href="/main">
                 <img src="/images/stock.png" width="50" height="50">
-                <span>Tabel Stock</span>
+                <span>Stock</span>
             </a>
         </div>
 
@@ -58,10 +58,10 @@
     </div>
     <div class="col-sm-9 p-4">
         <div class="container">
-            <h2 class="mb-3">Table Stock</h2>
+            <h2 class="mb-3">Table Transaksi</h2>
             <div class="mb-4">
                 <a href="/gettransaksi" class="btn btn-outline-secondary mr-2"><i class="fa fa-files-o"></i> Print</a>
-                <a href="/addtransaction" class="btn btn-outline-success"><i class="fa fa-plus"></i> Add Transaksi</a>
+
             </div>
 
             <div class="data">
@@ -87,7 +87,12 @@
                             <td>{{$row->tujuan}}</td>
                             <td>{{$row->validation}}</td>
                             <td>
-                                <a href="/deletetransactions/{{$row->id}}" class="btn btn-outline-danger mr-2">
+                                <a id="delete"
+                                   class="btn btn-outline-danger mr-2"
+                                   data-toggle="modal"
+                                   data-target="#Modaldelete"
+                                    data-url="/deletetransactions/{{$row->id}}"
+                                >
 
                                     <i class="fa fa-trash"></i>
                                 </a>
@@ -160,6 +165,33 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="modal fade" id="Modaldelete">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <form id="form" action="" method="get">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h3 class="text-success">Konfirmasi</h3>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <h5 class="">Apakah Ingin Menghapus Barang ?</h5>
+
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-success">Delete</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -181,6 +213,12 @@
         $('.modal-body #tujuan').val(tujuan)
         $('.modal-body #validasi').val(validasi)
         $('.modal-body #stock').val(stock)
+
+    })
+
+    $(document).on('click' , '#delete' , function(){
+        let url = $(this).data('url')
+        $('.modal-content #form').attr('action', url);
 
     })
 

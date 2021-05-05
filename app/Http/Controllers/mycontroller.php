@@ -10,6 +10,8 @@ class mycontroller extends Controller
 {
     //
 
+
+
     public function index(){
         $data = DB::table('products')->get();
         return view('main' , ['data' => $data]);
@@ -78,6 +80,7 @@ class mycontroller extends Controller
         ])->get() ;
 
         if($data){
+            setcookie('user' , "admin");
             return redirect("/main");
         }else{
             return redirect("/login");

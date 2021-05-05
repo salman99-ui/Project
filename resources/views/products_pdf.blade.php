@@ -10,7 +10,7 @@
 <body>
 <div class="row">
 
-    <div class="container">
+
         <h2 style="text-align: center; margin: 40px 0">Data Stock Bulan {{date("F Y")}}</h2>
         <div class="data">
             <table id="myTable" class="table table-bordered">
@@ -43,7 +43,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+
 
 </div>
 <script>
