@@ -42,10 +42,10 @@
 <div class="row">
     <div class="col-sm-3 col1 d-flex flex-column p-4 ">
 
-       <div class="stock mb-5 d-flex justify-content-center">
-        <a href="/main">
+       <div class="bg-light p-3 stock mb-5 d-flex justify-content-center">
+        <a class="" href="/main">
             <img src="/images/stock.png" width="50" height="50">
-            <span>Tabel Stock</span>
+            <span class="text-dark">Tabel Stock</span>
         </a>
        </div>
 
@@ -63,7 +63,7 @@
 
         <div class="mb-4">
             <a href="/getproducts" class="btn btn-outline-secondary mr-2"><i class="fa fa-files-o"></i> Print </a>
-            <a data-target="#Modaladd" id="" data-toggle="modal" class="btn btn-outline-success"><i class="fa fa-plus"></i> Add Stock</a>
+            <a data-target="#Modaladd" id="add" data-toggle="modal" class="btn btn-outline-success"><i class="fa fa-plus"></i> Add Stock</a>
         </div>
 
         <div class="data">
@@ -148,7 +148,7 @@
 
                                <div class="form-group">
                                    <label>Tujuan Transaksi</label>
-                                   <input id="satuan_barang" type="" value="" class="form-control" name="tujuan"  />
+                                   <input id="tujuan" type="" placeholder="Rs.Mitra" value="" class="form-control" name="tujuan"  />
                                </div>
 
                                <div class="form-group">
@@ -236,7 +236,7 @@
                         {{csrf_field()}}
                         <!-- Modal Header -->
                             <div class="modal-header">
-                                <h3 class="text-success">Ubah Data</h3>
+                                <h3 class="text-success">Tambah Data</h3>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
 
@@ -245,7 +245,7 @@
 
                                 <div class="form-group">
                                     <label>Nama Barang</label>
-                                    <input id="nama" type="" value="" class="form-control" name="barang" placeholder="Nama Barang" />
+                                    <input type="" value="" class="form-control" name="barang" placeholder="Nama Barang" />
                                 </div>
 
                                 <div class="form-group">
@@ -259,12 +259,12 @@
 
                                 <div class="form-group">
                                     <label>Harga</label>
-                                    <input id="harga" type="" value="" class="form-control" name="harga" placeholder="60.000" />
+                                    <input type="" value="" class="form-control" name="harga" placeholder="60.000" />
                                 </div>
 
                                 <div class="form-group">
                                     <label>Jumlah Stock</label>
-                                    <input id="stock" type="" value="" class="form-control" name="stock" placeholder="Stock Barang"  />
+                                    <input  type="" value="" class="form-control" name="stock" placeholder="Stock Barang"  />
 
 
                                 </div>
@@ -321,12 +321,11 @@
     $(document).on('click' , '#tambah' , function(){
         let nama = $(this).data('barang')
         let harga = $(this).data('harga')
-        let satuan = $(this).data('satuan')
+
 
 
         $('.modal-body #nama_barang').val(nama)
         $('.modal-body #harga_barang').val(harga)
-        $('.modal-body #satuan_barang').val(satuan)
         $('.modal-body #stock_keluar').val(0)
 
     })
@@ -335,7 +334,7 @@
         let nama = $(this).data('barang')
         let harga = $(this).data('harga')
         let satuan = $(this).data('satuan')
-        let stock = $(this).data('satuan')
+        let stock = $(this).data('stock')
 
         $('.modal-body #nama').val(nama)
         $('.modal-body #harga').val(harga)
@@ -343,6 +342,7 @@
         $('.modal-body #stock').val(stock)
 
     })
+
 
     $(document).on('click' , '#delete' , function(){
         let url = $(this).data('url')

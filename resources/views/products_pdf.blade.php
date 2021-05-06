@@ -8,11 +8,11 @@
     </style>
 </head>
 <body>
-<div class="row">
+
 
 
         <h2 style="text-align: center; margin: 40px 0">Data Stock Bulan {{date("F Y")}}</h2>
-        <div class="data">
+        <div class="mt-5">
             <table id="myTable" class="table table-bordered">
                 <thead>
                 <tr>
@@ -45,7 +45,7 @@
         </div>
 
 
-</div>
+
 <script>
 
 

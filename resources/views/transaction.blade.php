@@ -41,20 +41,20 @@
 <div class="row">
     <div class="col-sm-3 col1 d-flex flex-column p-4 ">
 
-        <div class="stock mb-5 d-flex justify-content-center">
+        <div class=" stock mb-5 d-flex justify-content-center">
             <a href="/main">
                 <img src="/images/stock.png" width="50" height="50">
-                <span>Stock</span>
+                <span class="">Stock</span>
             </a>
         </div>
 
-        <div class="transaction d-flex justify-content-center">
-            <a href="/stock">
+        <div class="bg-light p-3 bg-success transaction d-flex justify-content-center">
+            <a href="/transaction">
                 <img src="/images/report.png" width="50" height="50">
-                <span>Transaksi</span>
+                <span class="text-dark">Transaksi</span>
             </a>
         </div>
-        <a href="/login" style="position: absolute ; margin : 0px 20px; display: block; bottom: 0;" onclick="out()"><img src="/images/out.png" >out</a>
+        <a href="/login" style="position: absolute ; margin : 0px 20px; display: block; bottom: 0;" onclick="out()"><img src="/images/out.png" >keluar</a>
     </div>
     <div class="col-sm-9 p-4">
         <div class="container">
