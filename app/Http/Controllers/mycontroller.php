@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF ;
@@ -48,6 +49,7 @@ class mycontroller extends Controller
     }
 
     public function login(){
+        Cookie::for
         return view('login');
     }
 
@@ -80,7 +82,7 @@ class mycontroller extends Controller
         ])->get() ;
 
         if($data){
-            setcookie('user' , "admin");
+            Cookie::queue('user' , 'admin');
             return redirect("/main");
         }else{
             return redirect("/login");

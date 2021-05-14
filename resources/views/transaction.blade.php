@@ -58,7 +58,7 @@
     </div>
     <div class="col-sm-9 p-4">
         <div class="container">
-            <h2 class="mb-3">Table Transaksi</h2>
+            <h2 class="mb-3">Tabel Transaksi</h2>
             <div class="mb-4">
                 <a href="/gettransaksi" class="btn btn-outline-secondary mr-2"><i class="fa fa-files-o"></i> Print</a>
 

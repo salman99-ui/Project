@@ -19,8 +19,8 @@ Route::get('/', function () {
 
 
 
-Route::get('/main' , [\App\Http\Controllers\mycontroller::class , 'index']);
-Route::get('/stock' , [\App\Http\Controllers\mycontroller::class , 'stock']);
+Route::get('/main' , [\App\Http\Controllers\mycontroller::class , 'index'])->middleware('cekuser');
+Route::get('/stock' , [\App\Http\Controllers\mycontroller::class , 'stock'])->middleware('cekuser');
 Route::get('/login' , [\App\Http\Controllers\mycontroller::class , 'login']);
 Route::get('/update' , [\App\Http\Controllers\mycontroller::class , 'update']);
 Route::get('/addtransaction' , [\App\Http\Controllers\mycontroller::class , 'addtransaction']);
