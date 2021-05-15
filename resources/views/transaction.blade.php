@@ -44,14 +44,14 @@
         <div class=" stock mb-5 d-flex justify-content-center">
             <a href="/main">
                 <img src="/images/stock.png" width="50" height="50">
-                <span class="">Stock</span>
+                <span class="">Tabel Stock</span>
             </a>
         </div>
 
         <div class="bg-light p-3 bg-success transaction d-flex justify-content-center">
             <a href="/transaction">
                 <img src="/images/report.png" width="50" height="50">
-                <span class="text-dark">Transaksi</span>
+                <span class="text-dark">Tabel Transaksi</span>
             </a>
         </div>
         <a href="/login" style="position: absolute ; margin : 0px 20px; display: block; bottom: 0;" onclick="out()"><img src="/images/out.png" >keluar</a>

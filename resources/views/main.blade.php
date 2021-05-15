@@ -52,7 +52,7 @@
         <div class="transaction d-flex justify-content-center">
             <a href="/transaction">
                 <img src="/images/report.png" width="50" height="50">
-                <span>Transaksi</span>
+                <span>Tabel Transaksi</span>
             </a>
         </div>
         <a href="/login" style="position: absolute ; margin : 0px 20px; display: block; bottom: 0;" onclick="out()"><img src="/images/out.png" > Keluar</a>
@@ -198,8 +198,9 @@
                                     <label>Satuan Barang</label>
                                     <select class="form-control" name="satuan">
                                         <option value="PCS">PCS</option>
-                                        <option value="Btl">Btl</option>
-                                        <option value="Ltr">Ltr</option>
+                                        <option value="BTL">BTL</option>
+                                        <option value="LTR">LTR</option>
+                                        <option value="BOX">BOX</option>
                                     </select>
                                 </div>
 
@@ -222,7 +223,7 @@
                             <!-- Modal footer -->
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-success">Update</button>
+                                <button type="submit" onclick="success()" class="btn btn-success">Update</button>
                             </div>
                         </form>
                     </div>
@@ -252,8 +253,9 @@
                                     <label>Satuan Barang</label>
                                     <select class="form-control" name="satuan">
                                         <option value="PCS">PCS</option>
-                                        <option value="Btl">Btl</option>
-                                        <option value="Ltr">Ltr</option>
+                                        <option value="BTL">BTL</option>
+                                        <option value="LTR">LTR</option>
+                                        <option value="BOX">BOX</option>
                                     </select>
                                 </div>
 
@@ -350,23 +352,13 @@
 
     })
 
-    function cancel(){
+    function success(){
         swal({
-            title : "Attention" ,
-            text : "Apakah Ingin Menghapus Data ?" ,
-            icon : "warning" ,
-            buttons : true,
+            title : "Success" ,
+            text : "Data Berhasil Di Update" ,
+            icon : "success" ,
 
-        }).then((value) => {
-            if(value){
-                swal({
-                    title : "Success" ,
-                    text : "Data Berhasil di Hapus" ,
-                    icon : "success" ,
-                    button : "Ok",
 
-                })
-            }
         })
 
     }

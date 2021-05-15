@@ -49,7 +49,7 @@ class mycontroller extends Controller
     }
 
     public function login(){
-        Cookie::for
+        Cookie::queue(Cookie::forget('user'));
         return view('login');
     }
 
@@ -132,15 +132,22 @@ class mycontroller extends Controller
     }
 
     public function getpdftrans(){
+        $date = ['Januari' , 'Februari' , 'Maret' ,
+            'April' , 'Mei' , 'Juni' , 'Juli' , 'Agustus' ,
+            'September' , 'Oktober' , 'November' , 'Desember'] ;
+
         $data = DB::table('transactions')->get();
         $pdf = PDF::loadview('transactions_pdf' , ['data' => $data]) ;
-        return $pdf->download('laporan_transaksi.pdf') ;
+        return $pdf->download('Transaksi_' . $date[date('n') - 1] . date('Y') . '.pdf') ;
     }
 
     public function getpdfstock(){
+        $date = ['Januari' , 'Februari' , 'Maret' ,
+            'April' , 'Mei' , 'Juni' , 'Juli' , 'Agustus' ,
+            'September' , 'Oktober' , 'November' , 'Desember'] ;
         $data = DB::table('products')->get();
         $pdf = PDF::loadview('products_pdf' , ['data' => $data]) ;
-        return $pdf->download('laporan_stock.pdf') ;
+        return $pdf->download('Stock_' . $date[date('n') - 1] . date('Y') . '.pdf') ;
     }
 
 }
