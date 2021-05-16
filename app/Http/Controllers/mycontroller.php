@@ -81,12 +81,16 @@ class mycontroller extends Controller
             ['password' , '=' , $request->input('password')]
         ])->get() ;
 
-        if($data){
+        if(isset($data)){
+            return redirect("/login");
+        }else{
+
             Cookie::queue('user' , 'admin');
             return redirect("/main");
-        }else{
-            return redirect("/login");
         }
+
+
+
     }
 
     public function stockprocess(Request $request){
