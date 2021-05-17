@@ -13,12 +13,14 @@ class mycontroller extends Controller
 
 
 
-    public function index(){
+    public function index(Request $request){
+        setcookie('user' , 'admin');
         $data = DB::table('products')->get();
         return view('main' , ['data' => $data]);
     }
 
     public function stock(){
+
         return view('stock');
     }
 
@@ -49,7 +51,7 @@ class mycontroller extends Controller
     }
 
     public function login(){
-        Cookie::queue(Cookie::forget('user'));
+        Cookie::forget('user');
         return view('login');
     }
 
@@ -76,17 +78,17 @@ class mycontroller extends Controller
     }
 
     public function authlogin(Request $request){
-        $data = DB::table('users')->where([
+
+
+        if( DB::table('users')->where([
             ['name' , '=' , $request->input('username')] ,
             ['password' , '=' , $request->input('password')]
-        ])->get() ;
-
-        if(isset($data)){
-            return redirect("/login");
-        }else{
-
-            Cookie::queue('user' , 'admin');
+        ])->exists()){
+            setcookie('user' , 'admin');
             return redirect("/main");
+
+        }else{
+            return redirect('/login');
         }
 
 
