@@ -24,6 +24,12 @@
 
         }
 
+        .wrapper .form .error{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
         .form input{
             display: block;
             margin: 20px auto;
@@ -61,8 +67,19 @@
         <form action="/login/process" method="post">
             {{csrf_field()}}
             <h2>Selamat Datang</h2>
-            <input type="text" name="username" placeholder="username">
+            <input class="{{$errors->has('username') ? 'border-danger' : ''}}" type="text" name="username" placeholder="username">
+            <div class="error">
+                @if($errors->has('username'))
+                    <span class="text-danger ">{{$errors->first('username')}}</span>
+                @endif
+            </div>
+
             <input type="password" name="password" placeholder="password">
+            <div class="error">
+                @if($errors->has('username'))
+                    <span class="text-danger ">{{$errors->first('password')}}</span>
+                @endif
+            </div>
             <button type="submit">Masuk</button>
         </form>
     </div>

@@ -158,7 +158,7 @@
                                 <div class="modal-footer">
 
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-success">Update</button>
+                                    <button type="submit" onclick="success()" class="btn btn-success">Update</button>
 
                                 </div>
                             </form>
@@ -239,6 +239,17 @@
 
                 })
             }
+        })
+
+    }
+
+    function success(){
+        swal({
+            title : "Success" ,
+            text : "Data Berhasil Di Update" ,
+            icon : "success" ,
+
+
         })
 
     }

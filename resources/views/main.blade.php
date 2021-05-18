@@ -143,12 +143,12 @@
 
                                <div class="form-group">
                                    <label>Stock keluar</label>
-                                   <input id="stock_keluar" type="" value="" class="form-control" name="stock"  />
+                                   <input id="stock_keluar" type="number" placeholder="0" class="form-control {{$errors->has('stockeluar') ? 'border-danger' : ''}}" name="stock"  />
                                </div>
 
                                <div class="form-group">
                                    <label>Tujuan Transaksi</label>
-                                   <input id="tujuan" type="" placeholder="Rs.Mitra" value="" class="form-control" name="tujuan"  />
+                                   <input id="tujuan" type="" placeholder="Rs.Mitra" value="" class="form-control {{$errors->has('tujuan') ? 'border-danger' : ''}}" name="tujuan"  />
                                </div>
 
                                <div class="form-group">
@@ -168,7 +168,7 @@
                         <!-- Modal footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Tambah</button>
+                            <button type="submit" onclick="transsuccess()" class="btn btn-primary">Tambah</button>
                         </div>
                         </form>
                     </div>
@@ -246,12 +246,12 @@
 
                                 <div class="form-group">
                                     <label>Nama Barang</label>
-                                    <input type="" value="" class="form-control" name="barang" placeholder="Nama Barang" />
+                                    <input type="" value="{{old('barang')}}" class="form-control {{$errors->has('barang') ? 'border-danger' : ''}}" name="barang" placeholder="Nama Barang" />
                                 </div>
 
                                 <div class="form-group">
                                     <label>Satuan Barang</label>
-                                    <select class="form-control" name="satuan">
+                                    <select class="form-control {{$errors->has('satuan') ? 'border-danger' : ''}}" name="satuan" >
                                         <option value="PCS">PCS</option>
                                         <option value="BTL">BTL</option>
                                         <option value="LTR">LTR</option>
@@ -261,12 +261,12 @@
 
                                 <div class="form-group">
                                     <label>Harga</label>
-                                    <input type="" value="" class="form-control" name="harga" placeholder="60.000" />
+                                    <input type="" value="{{old('harga')}}" class="form-control {{$errors->has('harga') ? 'border-danger' : ''}}" name="harga" placeholder="60.000" />
                                 </div>
 
                                 <div class="form-group">
                                     <label>Jumlah Stock</label>
-                                    <input  type="" value="" class="form-control" name="stock" placeholder="Stock Barang"  />
+                                    <input  type="" value="{{old('stock')}}" class="form-control {{$errors->has('stock') ? 'border-danger' : ''}}" name="stock" placeholder="Stock Barang"  />
 
 
                                 </div>
@@ -353,6 +353,17 @@
     })
 
     function success(){
+        swal({
+            title : "Success" ,
+            text : "Data Berhasil Di Update" ,
+            icon : "success" ,
+
+
+        })
+
+    }
+
+    function transsuccess(){
         swal({
             title : "Success" ,
             text : "Data Berhasil Di Update" ,

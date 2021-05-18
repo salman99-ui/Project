@@ -79,6 +79,10 @@ class mycontroller extends Controller
 
     public function authlogin(Request $request){
 
+        $request->validate([
+            'username' => 'required' ,
+            'password' => 'required'
+        ]) ;
 
         if( DB::table('users')->where([
             ['name' , '=' , $request->input('username')] ,
@@ -96,6 +100,14 @@ class mycontroller extends Controller
     }
 
     public function stockprocess(Request $request){
+
+        $request->validate([
+            'barang' => 'required' ,
+            'harga' => 'required' ,
+            'stock' => 'required' ,
+            'satuan' => 'required' ,
+        ]) ;
+
         DB::table('products')->insert([
             'nama_barang' => $request->input('barang') ,
             'harga' => $request->input('harga') ,
@@ -108,6 +120,12 @@ class mycontroller extends Controller
     }
 
     public function transactionprocess(Request $request){
+        $request->validate([
+            'stock' => 'required' ,
+            'tujuan' => 'required' ,
+
+        ]) ;
+
         DB::table('transactions')->insert([
             'tanggal' => date("d/m/Y"),
             'nama_barang' => $request->input('barang') ,
