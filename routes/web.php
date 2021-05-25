@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/main' , [\App\Http\Controllers\mycontroller::class , 'index']);
+Route::get('/main' , [\App\Http\Controllers\mycontroller::class , 'index'])->middleware('cekuser');
 Route::get('/stock' , [\App\Http\Controllers\mycontroller::class , 'stock']);
 Route::get('/login' , [\App\Http\Controllers\mycontroller::class , 'login']);
 Route::get('/update' , [\App\Http\Controllers\mycontroller::class , 'update']);
@@ -42,4 +42,7 @@ Route::get('/deletetransactions/{id}' , [\App\Http\Controllers\mycontroller::cla
 
 Route::get('/gettransaksi' , [\App\Http\Controllers\mycontroller::class , 'getpdftrans']) ;
 Route::get('/getproducts' , [\App\Http\Controllers\mycontroller::class , 'getpdfstock']) ;
-
+Route::get('/logout' ,  function(){
+    setcookie('user' , 'admin' , time()-1 , '/main');
+    return redirect('/login');
+});

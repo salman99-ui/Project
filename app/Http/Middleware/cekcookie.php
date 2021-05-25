@@ -18,7 +18,7 @@ class cekcookie
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->cookie('user') == "admin") {
+        if (isset($_COOKIE['user'])) {
             return $next($request);
         } else {
             return redirect('/login');

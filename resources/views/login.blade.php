@@ -76,7 +76,7 @@
 
             <input type="password" name="password" placeholder="password">
             <div class="error">
-                @if($errors->has('username'))
+                @if($errors->has('password'))
                     <span class="text-danger ">{{$errors->first('password')}}</span>
                 @endif
             </div>

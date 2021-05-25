@@ -14,7 +14,7 @@ class mycontroller extends Controller
 
 
     public function index(Request $request){
-        setcookie('user' , 'admin');
+
         $data = DB::table('products')->get();
         return view('main' , ['data' => $data]);
     }
@@ -88,7 +88,8 @@ class mycontroller extends Controller
             ['name' , '=' , $request->input('username')] ,
             ['password' , '=' , $request->input('password')]
         ])->exists()){
-            setcookie('user' , 'admin');
+            setcookie('user' , 'admin' , time() + 3600 * 60 , '/main');
+
             return redirect("/main");
 
         }else{

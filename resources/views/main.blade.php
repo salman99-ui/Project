@@ -55,7 +55,7 @@
                 <span>Tabel Transaksi</span>
             </a>
         </div>
-        <a href="/login" style="position: absolute ; margin : 0px 20px; display: block; bottom: 0;" onclick="out()"><img src="/images/out.png" > Keluar</a>
+        <a href="/logout" style="position: absolute ; margin : 0px 20px; display: block; bottom: 0;" onclick="out()"><img src="/images/out.png" > Keluar</a>
     </div>
     <div class="col-sm-9 p-4">
         <div class="container">
@@ -138,7 +138,7 @@
 
                                <div class="form-group">
                                    <label>Nama Barang</label>
-                                   <input id="nama_barang" type="" value="" class="form-control" name="barang"  />
+                                   <input id="nama_barang" readonly type="" value="" class="form-control" name="barang"  />
                                </div>
 
                                <div class="form-group">
@@ -366,7 +366,18 @@
     function transsuccess(){
         swal({
             title : "Success" ,
-            text : "Data Berhasil Di Update" ,
+            text : "Data Transaksi Berhasil Di Simpan" ,
+            icon : "success" ,
+
+
+        })
+
+    }
+
+    function successadd(){
+        swal({
+            title : "Success" ,
+            text : "Data Berhasil Di Tambahkan" ,
             icon : "success" ,
 
 
