@@ -142,7 +142,7 @@
 
                                 <div class="form-group">
                                     <label for="tujuan">Tujuan</label>
-                                    <input type="text" name="tujuan" class="form-control" id="tujuan">
+                                    <input type="text" name="tujuan" class="form-control {{$errors->has('tujuan') ? 'is-invalid' : ''}}" id="tujuan">
                                 </div>
 
                                 <div class="form-group">

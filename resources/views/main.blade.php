@@ -143,12 +143,12 @@
 
                                <div class="form-group">
                                    <label>Stock keluar</label>
-                                   <input id="stock_keluar" type="number" placeholder="0" class="form-control {{$errors->has('stockeluar') ? 'border-danger' : ''}}" name="stock"  />
+                                   <input id="stock_keluar" type="number" placeholder="0" class="form-control {{$errors->has('stockeluar') ? 'is-invalid' : ''}}" name="stock"  />
                                </div>
 
                                <div class="form-group">
                                    <label>Tujuan Transaksi</label>
-                                   <input id="tujuan" type="" placeholder="Rs.Mitra" value="" class="form-control {{$errors->has('tujuan') ? 'border-danger' : ''}}" name="tujuan"  />
+                                   <input id="tujuan" type="" placeholder="Rs.Mitra" value="" class="form-control {{$errors->has('tujuan') ? 'is-invalid' : ''}}" name="tujuan"  />
                                </div>
 
                                <div class="form-group">
@@ -168,7 +168,7 @@
                         <!-- Modal footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            <button type="submit" onclick="transsuccess()" class="btn btn-primary">Tambah</button>
+                            <button type="submit" onclick="" class="btn btn-primary">Tambah</button>
                         </div>
                         </form>
                     </div>
@@ -191,12 +191,12 @@
 
                                 <div class="form-group">
                                     <label>Nama Barang</label>
-                                    <input id="nama" type="" value="" class="form-control" name="barang"  />
+                                    <input id="nama" readonly type="" value="" class="form-control" name="barang"  />
                                 </div>
 
                                 <div class="form-group">
                                     <label>Satuan Barang</label>
-                                    <select class="form-control" name="satuan">
+                                    <select class="form-control" name="satuan1">
                                         <option value="PCS">PCS</option>
                                         <option value="BTL">BTL</option>
                                         <option value="LTR">LTR</option>
@@ -206,12 +206,12 @@
 
                                 <div class="form-group">
                                     <label>Harga</label>
-                                    <input id="harga" type="" value="" class="form-control" name="harga"  />
+                                    <input id="harga" type="" value="" class="form-control {{$errors->has('harga2') ? 'is-invalid' : ''}}" name="harga1"  />
                                 </div>
 
                                 <div class="form-group">
                                     <label>Jumlah Stock</label>
-                                    <input id="stock" type="" value="" class="form-control" name="stock"  />
+                                    <input id="stock" type="" value="" class="form-control" name="stock1" {{$errors->has('stock2') ? 'is-invalid' : ''}} />
 
 
                                 </div>

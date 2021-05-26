@@ -31,9 +31,15 @@ class mycontroller extends Controller
     }
 
     public function updatestockprocess(Request $request){
+            $request->validate([
+
+                'harga1' => 'required' ,
+                'stock1' => 'required|gt:0'
+            ]) ;
+
              DB::table('products')
             ->where('nama_barang' , '=' , $request->barang)
-            ->update(['nama_barang' => $request->barang ,'stock' => $request->stock , 'harga' => $request->harga , 'satuan' => $request->satuan]);
+            ->update(['nama_barang' => $request->barang ,'stock' => $request->stock1 , 'harga' => $request->harga1 , 'satuan' => $request->satuan1]);
 
              return redirect('/main');
     }
@@ -146,6 +152,11 @@ class mycontroller extends Controller
     }
 
     public function updatetransactionprocess(Request $request){
+
+        $request->validate([
+            'tujuan' => 'required'
+        ]) ;
+
         DB::table('transactions')->where('id' , '=' , $request->id)
             ->update(['tujuan' => $request->tujuan , 'validation' => $request->validation]);
        return redirect('/transaction');
